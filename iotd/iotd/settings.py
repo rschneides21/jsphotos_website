@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['iotd3-dev.us-east-1.elasticbeanstalk.com']
 
 
 # Application definition
