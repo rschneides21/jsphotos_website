@@ -8,6 +8,5 @@ def home(request):
     print(settings.STATIC_ROOT)
     return render_to_response('images/home.html',
                               { 'image' : image})
-#TC 3
-def images(request):
-	return HttpResponse("Hello, world. You're at the images index.")
+def gallery(request):
+	return HttpResponse("Hello, world. You're at the gallery index.")

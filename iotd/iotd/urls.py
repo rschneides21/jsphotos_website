@@ -8,7 +8,6 @@ import images.views
 urlpatterns = [
 	#try changing include(admin.site.urls) -> admin.site.urls
     url(r'^admin/', include(admin.site.urls)),
-    #TC1 added images path, not sure about 'images.urls'
-    url(r'^images/', include('images.urls')),
+    url(r'^gallery/', include('gallery.urls')),
     url(r'^$', images.views.home, name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
