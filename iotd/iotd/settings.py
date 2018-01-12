@@ -22,8 +22,6 @@ SECRET_KEY = '-r5cw=c2xk9!v87m2(3av2cdr!!k_4+pj&c6qc_p_o^1%m8nh^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = ['iotd3-dev.us-east-1.elasticbeanstalk.com']
 
 
@@ -56,6 +54,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
+        'TEMPLATE_DEBUG': True,
         'OPTIONS': {
             'debug': DEBUG,
             'context_processors': [
@@ -96,8 +95,8 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'iotd',
-            'USER': 'iotd',
-            'PASSWORD': 'iotd',
+            'USER': '',
+            'PASSWORD': '',
             'HOST' : 'localhost',
             'PORT' : '5432',
         }
