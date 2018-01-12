@@ -5,11 +5,11 @@ from images.models import FeaturedImage, GalleryImage
 
 @admin.register(GalleryImage)
 class GalleryImageAdmin(admin.ModelAdmin):
-	list_display = ('thumbnail', 'name', 'category', 'uploaded')
-	ordering = ('-category',)
-	def thumbnail(self, obj):
-		if obj.img:
-			return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
+    list_display = ('thumbnail', 'name', 'category', 'uploaded')
+    ordering = ('-category',)
+    def thumbnail(self, obj):
+        if obj.img:
+            return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
         else:
             "no image"
 
