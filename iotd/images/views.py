@@ -9,7 +9,7 @@ def home(request):
     return render_to_response('images/home.html',
                               { 'image' : image})
 def gallery(request):
-	images = GalleryImage.objects.all()
+	images = FeaturedImage.objects.latest('uploaded')
 	# {'images' : image} == key value pair
-	return render_to_response('images/gallery.html', {'images' : images})
+	return render_to_response('images/gallery.html', {'image' : image})
 	
