@@ -24,21 +24,22 @@
       background: none;
     }
     </style>
-
+  </head>  
+  <body>
     <table>
       <thead>
         <tr>
-        <th>Name</th>
-        <th>Uploaded at</th>
-        <th>Size</th>
-      </tr>
-    </thead>
-    <tbody>
+          <th>Name</th>
+          <th>Uploaded at</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      <tbody>
         <tr>
           <td><img source="{{ image.img.url }}"</img></td>
         </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
 
     <script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
