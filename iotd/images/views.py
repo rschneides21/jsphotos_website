@@ -6,10 +6,10 @@ from django.http import HttpResponse
 def home(request):
     image = FeaturedImage.objects.latest('uploaded') 
     print(settings.STATIC_ROOT)
-    return render_to_response('images/home.html',
+    return render(request, 'images/home.html',
                               { 'image' : image})
 def gallery(request):
 	image = FeaturedImage.objects.latest('uploaded')
 	# {'images' : image} == key value pair, json?
-	return render_to_response('images/gallery.html', {'image' : image})
+	return render(request ,'images/gallery.html', {'image' : image})
 	
