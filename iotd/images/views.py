@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from images.models import FeaturedImage, GalleryImage
 from django.conf import settings
 from django.http import HttpResponse
