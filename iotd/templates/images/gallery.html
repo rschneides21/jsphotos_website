@@ -24,23 +24,12 @@
       background: none;
     }
     </style>
-  {% block content %}  
-  </head>  
+  
+  </head>
+
   <body>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Uploaded at</th>
-          <th>Size</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><img source="{{ image.img.url }}"</img></td>
-        </tr>
-      </tbody>
-    </table>
+    {% block content %}
+    <img src = "{{image.img.url}}">
     {% endblock %}
     <script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
