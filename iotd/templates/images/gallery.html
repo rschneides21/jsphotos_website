@@ -32,7 +32,7 @@
     {% block javascript%}
     <script> 
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
-    document.getElementById("image1").innerHTML = "<img src = " + img_urls[0] + ">"
+    document.getElementById("image1").innerHTML = "<img src = " + img_urls[1] + ">"
 
     </script>
     {% endblock %}
