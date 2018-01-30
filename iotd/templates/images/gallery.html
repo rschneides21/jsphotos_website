@@ -31,7 +31,7 @@
     <div id = "image1"></div>
     {% block javascript%}
     <script> 
-    var img_url = {{image.img.url}}
+    var img_url = "{{image.img.url}}"
     document.getElementById("image1").innerHTML = "<img src = " + img_url + ">"
 
     </script>
