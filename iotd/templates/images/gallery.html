@@ -29,17 +29,14 @@
 
   <body>
     <div id = "image1"></div>
-    {% load django_tables2 %} 
-    {% render_table image_table %}
-    <!--{% block javascript%}
+    {% block javascript%}
     <script> 
-    var img_urls = [0]
-    img_url[0] = "{{image.img.url}}"
-    document.getElementById("image1").innerHTML = "<img src = " + img_url + ">"
+    var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
+    document.getElementById("image1").innerHTML = "<img src = " + img_urls[0] + ">"
 
     </script>
     {% endblock %}
-    -->
+
     <!--{% block content %}
     <img src = "{{image.img.url}}">
     {% endblock %}
