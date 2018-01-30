@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from images.models import FeaturedImage, GalleryImage
+from images.models import FeaturedImage, GalleryImage, WebsiteImage
 from django.conf import settings
 from django.http import HttpResponse
 
 def home(request):
-    image = FeaturedImage.objects.latest('uploaded') 
+    image = WebsiteImage.objects.values('') 
     print(settings.STATIC_ROOT)
     return render(request, 'images/home.html',
                               { 'image' : image})
