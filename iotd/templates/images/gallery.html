@@ -40,14 +40,15 @@
     for (i = 0; i < array_length; i++){
         // start new row
         if (i % 4 == 0){
-           document.getElementById(image_table).innerHTML += "<tr>"
+           document.getElementById("image_table").innerHTML += "<tr>"
         }
 
-        document.getElementById(image_table).innerHTML += "<td><img src=" + img_urls[i] + "></td>"
+        document.getElementById("image_table").innerHTML += "<td><img src=" + img_urls[i] + "></td>"
 
         // end current row
-        if (i % 4 == 1)
-          document.getElementById(image_table).innerHTML += "</tr>"
+        if (i % 4 == 1){
+          document.getElementById("image_table").innerHTML += "</tr>"
+        }  
         
     }
     //document.getElementById(image_table).innerHTML = 
