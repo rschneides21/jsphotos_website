@@ -29,10 +29,29 @@
 
   <body>
     <div id = "image1"></div>
+    <table id="image_table">
+    </table> 
     {% block javascript%}
     <script> 
+    // from https://groups.google.com/forum/#!topic/django-users/PI7F3_U4eC4
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
-    document.getElementById("image1").innerHTML = "<img src = " + img_urls[1] + ">"
+
+    var array_length = img_urls.length
+    for (i = 0; i < array_length; i++){
+        // start new row
+        if (i % 4 == 0){
+           document.getElementById(image_table).innerHTML += "<tr>"
+        }
+
+        document.getElementById(image_table).innerHTML += "<td><img src=" + img_urls[i] + "></td>"
+
+        // end current row
+        if (i % 4 == 1)
+          document.getElementById(image_table).innerHTML += "</tr>"
+        
+    }
+    //document.getElementById(image_table).innerHTML = 
+    //document.getElementById("image1").innerHTML = "<img src = " + img_urls[1] + ">"
 
     </script>
     {% endblock %}
