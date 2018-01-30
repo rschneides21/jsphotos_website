@@ -4,7 +4,7 @@ from django.conf import settings
 from django.http import HttpResponse
 
 def home(request):
-    image = WebsiteImage.objects.values('') 
+    image = WebsiteImage.objects.filter(name='Logo') 
     print(settings.STATIC_ROOT)
     return render(request, 'images/home.html',
                               { 'image' : image})

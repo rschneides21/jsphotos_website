@@ -17,6 +17,6 @@ class GalleryImage(models.Model):
 
 class WebsiteImage(models.Model):
 
-	name = models.CharField(max_length = 200)
+	name = models.CharField(max_length=200)
 	uploaded = models.DateTimeField(auto_now=True)
 	img = models.ImageField(upload_to="")
