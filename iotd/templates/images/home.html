@@ -162,10 +162,10 @@
 		 document.getElementById("Jeff-Schneiderman").innerHTML += "<img src= " + logos_urls[1] + " alt='logo' class = 'center' width = 243 height = 18 >"
 
 		 var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
-		 document.getElementById("ul").innerHTML += "<img src = " + img_urls[3] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
+		 document.getElementById("ul").innerHTML += "<img src = " + img_urls[1] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
 		 document.getElementById("ur").innerHTML += "<img src = " + img_urls[2] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
-		 document.getElementById("bl").innerHTML += "<img src = " + img_urls[1] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
-		 document.getElementById("br").innerHTML += "<img src = " + img_urls[0] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
+		 document.getElementById("bl").innerHTML += "<img src = " + img_urls[0] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
+		 document.getElementById("br").innerHTML += "<img src = " + img_urls[3] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
 	</script>	
 
     
