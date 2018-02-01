@@ -123,7 +123,8 @@
     
 	<body>
 	{% block body %}
-	<div id = "logo"><img src="{{ logo.img.url }}" alt="logo" class = "center" width = 70 height = 70 ></div> 
+	<div id = "logo"></div>
+	<div id = "Jeff-Schneiderman"></div>  
 
 	<table id="image_table"> 
 
@@ -155,12 +156,16 @@
 		</tr>	
 	</table>
 
-	<script> 
+	<script>
+		 var logos_urls = [{% for logo in logos %}"{{ logo.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
+		 document.getElementById("logo").innerHTML += "<img src= " + logos_urls[0] + " alt='logo' class = 'center' width = 70 height = 70 >"
+		 document.getElementById("Jeff-Schneiderman").innerHTML += "<img src= " + logos_urls[1] + " alt='logo' class = 'center' width = 243 height = 18 >"
+
 		 var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
-		 document.getElementById("ul").innerHTML += "<img src = " + img_urls[3] + " width = '500' height = '301'>"
-		 document.getElementById("ur").innerHTML += "<img src = " + img_urls[2] + " width = '500' height = '301'>"
-		 document.getElementById("bl").innerHTML += "<img src = " + img_urls[1] + " width = '500' height = '301'>"
-		 document.getElementById("br").innerHTML += "<img src = " + img_urls[0] + " width = '500' height = '301'>"
+		 document.getElementById("ul").innerHTML += "<img src = " + img_urls[3] + " width = '500' height = '303'>"
+		 document.getElementById("ur").innerHTML += "<img src = " + img_urls[2] + " width = '500' height = '303'>"
+		 document.getElementById("bl").innerHTML += "<img src = " + img_urls[1] + " width = '500' height = '303'>"
+		 document.getElementById("br").innerHTML += "<img src = " + img_urls[0] + " width = '500' height = '303'>"
 	</script>	
 
     <script src="{% static "js/jquery-1.11.0.min.js" %}"></script>

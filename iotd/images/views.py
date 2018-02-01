@@ -4,11 +4,11 @@ from django.conf import settings
 from django.http import HttpResponse
 
 def home(request):
-    logo = WebsiteImage.objects.get(name = 'Logo')
+    logos = WebsiteImage.objects.all()
     images = FrontPageImage.objects.all() 
     print(settings.STATIC_ROOT)
     return render(request, 'images/home.html',
-                              { 'logo' : logo, 'images' : images})
+                              { 'logos' : logos, 'images' : images})
 def gallery(request):
 	images = GalleryImage.objects.all()
 	# {'images' : image} == key value pair, json?
