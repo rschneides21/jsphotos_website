@@ -1,5 +1,5 @@
 from django.contrib import admin
-from images.models import FeaturedImage, GalleryImage, WebsiteImage
+from images.models import FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage
 
 # Register your models here.
 
@@ -38,6 +38,18 @@ class WebsiteImageAdmin(admin.ModelAdmin):
             return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
         else:
             "no image"
-    thumbnail.allow_tags = True             
+    thumbnail.allow_tags = True
+
+
+@admin.register(FrontPageImage)
+class FrontPageImageAdmin(admin.ModelAdmin):
+    list_display = ('thumbnail', 'name', 'uploaded')
+    ordering = ('-uploaded',)
+    def thumbnail(self, obj):
+        if obj.img:
+            return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
+        else:
+            "no image"
+    thumbnail.allow_tags = True                
 
 

@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from images.models import FeaturedImage, GalleryImage, WebsiteImage
+from images.models import FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage
 from django.conf import settings
 from django.http import HttpResponse
 
 def home(request):
-    image = WebsiteImage.objects.get(name = 'Logo') 
+    logo = WebsiteImage.objects.get(name = 'Logo')
+    images = FrontPageImage.objects.all() 
     print(settings.STATIC_ROOT)
     return render(request, 'images/home.html',
-                              { 'image' : image})
+                              { 'logo' : logo, 'images' : images})
 def gallery(request):
 	images = GalleryImage.objects.all()
 	# {'images' : image} == key value pair, json?
