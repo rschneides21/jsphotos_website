@@ -1,7 +1,12 @@
 {% extends "base.html" %}
+
+{*block extracss*}{
+
+{*endblock*}
 {% block additions %}
-    <div id = "image_table">
-    </div>  
+    <table style="max-width:80%" align = "center" cellpadding="0" cellspacing="0">
+    </table> 
+    
     <script> 
     // from https://groups.google.com/forum/#!topic/django-users/PI7F3_U4eC4
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
