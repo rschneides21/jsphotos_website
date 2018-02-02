@@ -131,6 +131,12 @@
     </svg>
   </div> 
 
+  <div id="headers" max-width = "100%">
+      <div id="h1"><font><a href = {% url 'home'%}>HOME </a></font></div>
+      <div id="h2"><font><a href = {% url 'gallery'%}>GALLERY </a></font></div> 
+      <div id="h3"><font>ABOUT</font></div>
+  </div>
+
   <script>
      var logos_urls = [{% for logo in logos %}"{{ logo.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
      document.getElementById("logo").innerHTML += "<img src= " + logos_urls[0] + " alt='logo' class = 'center' width = 70 height = 70  style= 'max-width:100%; height:auto;'>"
