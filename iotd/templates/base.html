@@ -139,8 +139,9 @@
 
   <script>
      var logos_urls = [{% for logo in logos %}"{{ logo.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
-     document.getElementById("logo").innerHTML += "<img src= " + logos_urls[0] + " alt='logo' class = 'center' width = 70 height = 70  style= 'max-width:100%; height:auto;'>"
-     document.getElementById("Jeff-Schneiderman").innerHTML += "<img src= " + logos_urls[1] + " alt='logo' class = 'center' width = 243 height = 18 style= 'max-width:100%; height:auto;'>"
+     document.getElementById("logo").innerHTML += "<a href = {% url 'home'%}><img src= " + logos_urls[0] + " alt='logo' class = 'center' width = 70 height = 70  style= 'max-width:100%; height:auto;'></a>"
+     document.getElementById("Jeff-Schneiderman").innerHTML += "<a href = {% url 'home'%}><img src= " + logos_urls[1] + " alt='logo' class = 'center' width = 243 height = 18 style= 'max-width:100%; height:auto;'></a>"
+
   </script>  
 
   {% endblock %}
