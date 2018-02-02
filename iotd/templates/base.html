@@ -114,8 +114,8 @@
 
 
     </style>
-    {* block extracss *}{
-    {* endblock *}
+    {% block extra_css %}{
+    {% endblock %}
   }
     </head>
     
@@ -130,9 +130,9 @@
     </svg>
   </div>  
 
-  {* block additions*}
+  {% block additions%}
 
-  {* endblock *}
+  {% endblock %}
 
   <script>
      var logos_urls = [{% for logo in logos %}"{{ logo.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
