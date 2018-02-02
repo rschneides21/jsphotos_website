@@ -11,6 +11,7 @@ def home(request):
                               { 'logos' : logos, 'images' : images})
 def gallery(request):
 	images = GalleryImage.objects.all()
+	logos = WebsiteImage.objects.all()
 	# {'images' : image} == key value pair, json?
-	return render(request ,'images/gallery.html', {'images' : images})
+	return render(request ,'images/gallery.html', {'images' : images, 'logos' : logos})
 	
