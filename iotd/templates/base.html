@@ -97,42 +97,7 @@
             transition: all 0.2s linear;
   }
 
-  td.lighten {
-    background: white;
-  }
-
-  td.lighten img {
-     -webkit-transition: all 0.2s linear;
-       -moz-transition: all 0.2s linear;
-        -ms-transition: all 0.2s linear;
-         -o-transition: all 0.2s linear;
-            transition: all 0.2s linear;
-  }
-
-  td.lighten:hover img{
-    opacity : 0.7;
-  }
-
-  .img-description{
-    position: absolute;
-    padding : 0;
-    border : 0;
-    visibility: hidden;
-      opacity: 0;
-      z-index:0;
-  }
-
-  td.lighten:hover .img-description{
-    visibility: visible;
-      opacity: 1;
-  }
-
-  td {
-    border-right: 5px solid transparent;
-      -webkit-background-clip: padding;
-      -moz-background-clip: padding;
-      background-clip: padding-box;
-  }
+  
 
   a:hover{
     color: #404040;
@@ -149,16 +114,14 @@
 
 
     </style>
-    {*block extracss*}{
-    {*endblock*}
+    {* block extracss *}{
+    {* endblock *}
   }
     </head>
     
   <body>
   <div id = "logo"></div>
   <div id = "Jeff-Schneiderman"></div>  
-
-  <table id="image_table"> 
 
   <!-- make line % of screen width -->
   <div id = "line">
@@ -169,14 +132,14 @@
 
   {* block additions*}
 
-  {*endblock*}
+  {* endblock *}
 
   <script>
      var logos_urls = [{% for logo in logos %}"{{ logo.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
      document.getElementById("logo").innerHTML += "<img src= " + logos_urls[0] + " alt='logo' class = 'center' width = 70 height = 70  style= 'max-width:100%; height:auto;'>"
      document.getElementById("Jeff-Schneiderman").innerHTML += "<img src= " + logos_urls[1] + " alt='logo' class = 'center' width = 243 height = 18 style= 'max-width:100%; height:auto;'>"
   </script> 
-  
+
 
     
 

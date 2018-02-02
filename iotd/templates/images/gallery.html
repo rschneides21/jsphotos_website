@@ -1,12 +1,40 @@
 {% extends "base.html" %}
 
-{*block extracss*}{
+{* block extracss *}{
+  <style>
+    td.lighten {
+    background: white;
+  }
 
-{*endblock*}
+  td.lighten img {
+     -webkit-transition: all 0.2s linear;
+       -moz-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+         -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+  }
+
+  td.lighten:hover img{
+    opacity : 0.7;
+  }
+
+  td.lighten:hover .img-description{
+    visibility: visible;
+      opacity: 1;
+  }
+
+  td {
+    border-right: 5px solid transparent;
+      -webkit-background-clip: padding;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+  }
+  </style>
+{* endblock *}
 {% block additions %}
     <table style="max-width:80%" align = "center" cellpadding="0" cellspacing="0">
     </table> 
-    
+
     <script> 
     // from https://groups.google.com/forum/#!topic/django-users/PI7F3_U4eC4
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
