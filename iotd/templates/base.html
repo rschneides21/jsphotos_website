@@ -116,6 +116,8 @@
     </style>
     {% block extra_css %}
     {% endblock %}
+
+    {% block main %}
     </head>
     
   <body>
@@ -127,17 +129,22 @@
     <svg height="1" width="1000" class = "center" >
         <line x1="0" y1="0" x2="1000" y2="0" style="stroke:rgb(166,166,166);stroke-width:2;"/>
     </svg>
-  </div>  
-
-  {% block additions%}
-
-  {% endblock %}
+  </div> 
 
   <script>
      var logos_urls = [{% for logo in logos %}"{{ logo.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
      document.getElementById("logo").innerHTML += "<img src= " + logos_urls[0] + " alt='logo' class = 'center' width = 70 height = 70  style= 'max-width:100%; height:auto;'>"
      document.getElementById("Jeff-Schneiderman").innerHTML += "<img src= " + logos_urls[1] + " alt='logo' class = 'center' width = 243 height = 18 style= 'max-width:100%; height:auto;'>"
-  </script> 
+  </script>  
+
+  {% endblock %}
+
+  {% block additions%}
+
+  {% endblock %}
+
+
+  
 
 
     
