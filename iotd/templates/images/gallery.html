@@ -40,22 +40,15 @@
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
 
     var array_length = img_urls.length
+    var table = document.getElementById("image_table");
+    var row_num = 0;
     for (i = 0; i < array_length; i++){
         // start new row
         if (i % 2 == 0){
-           document.getElementById("image_table").innerHTML += "<tr>"
+           var row = table.insertRow(row_num++)
         }
-
-        document.getElementById("image_table").innerHTML += "<td><img src=" + img_urls[i] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'></td>"
-
-        // end current row when full
-        if (i % 2 == 1){
-          document.getElementById("image_table").innerHTML += "</tr>"
-        }  
-    }
-    // if table doesn't end with a full row, end table row
-    if (array_length % 2 != 1){
-      document.getElementById("image_table").innerHTML += "</tr>"
+        var cell = row.insertCell(0);
+        cell.innerHTML += "<img src=" + img_urls[i] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
     }
     //document.getElementById(image_table).innerHTML = 
     //document.getElementById("image1").innerHTML = "<img src = " + img_urls[1] + ">"
