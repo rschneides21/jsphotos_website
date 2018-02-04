@@ -41,23 +41,20 @@
 
     var array_length = img_urls.length
     for (i = 0; i < array_length; i++){
-      img_urls[i].height *= .25
-      img_urls[i].width *= .25
         // start new row
-        if (i % 4 == 0){
+        if (i % 2 == 0){
            document.getElementById("image_table").innerHTML += "<tr>"
-           console.log("new row")
         }
 
-        document.getElementById("image_table").innerHTML += "<td><img src=" + img_urls[i] + "></td>"
+        document.getElementById("image_table").innerHTML += "<td><img src=" + img_urls[i] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>></td>"
 
         // end current row when full
-        if (i % 4 == 1){
+        if (i % 2 == 1){
           document.getElementById("image_table").innerHTML += "</tr>"
         }  
     }
     // if table doesn't end with a full row, end table row
-    if (array_length % 4 != 1){
+    if (array_length % 2 != 1){
       document.getElementById("image_table").innerHTML += "</tr>"
     }
     //document.getElementById(image_table).innerHTML = 
