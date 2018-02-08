@@ -15,3 +15,7 @@ def gallery(request):
 	# {'images' : image} == key value pair, json?
 	return render(request ,'images/gallery.html', {'images' : images, 'logos' : logos})
 	
+def image(request, image):
+	image_obj = GalleryImage.objects.get(id = image)
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/image.html', {'image' : image_obj, 'logos' : logos})
