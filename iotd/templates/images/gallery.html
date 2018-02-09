@@ -40,7 +40,7 @@
     <script> 
     // from https://groups.google.com/forum/#!topic/django-users/PI7F3_U4eC4
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
-    var img_ids = [{% for image in images %}"{{ image.img.id }}"{% if not forloop.last %},{% endif %}{% endfor %}];
+
     var array_length = img_urls.length
     var table = document.getElementById("image_table");
     var row_num = 0;
@@ -50,7 +50,7 @@
            var row = table.insertRow(row_num++)
         }
         var cell = row.insertCell(0);
-        cell.innerHTML += "<form action ='{% url 'image' images.objects.get(id = img_ids[i])%}' method = post> <img src= " + img_urls[i] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'></form>"
+        cell.innerHTML += "<img src=" + img_urls[i] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
     }
     //document.getElementById(image_table).innerHTML = 
     //document.getElementById("image1").innerHTML = "<img src = " + img_urls[1] + ">"
