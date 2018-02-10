@@ -25,7 +25,7 @@ def about(request):
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/about.html', {'image' : image, 'logos' : logos})
 
-def about_image(request, image_id):
+def aimage(request, image_id):
 	image = GalleryImage.objects.get(id = image_id)
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/image.html', {'image' : image, 'logos' : logos})	
