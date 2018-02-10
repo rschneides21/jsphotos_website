@@ -26,6 +26,6 @@ def about(request):
 	return render(request, 'images/about.html', {'image' : image, 'logos' : logos})
 
 def aimage(request, image_id):
-	image = GalleryImage.objects.get(id = image_id)
+	image = get_object_or_404(GalleryImage, pk = image_id)
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/image.html', {'image' : image, 'logos' : logos})	
