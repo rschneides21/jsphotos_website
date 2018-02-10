@@ -6,8 +6,9 @@
   </style>
 {% endblock %}
 {% block additions %}
-{% csrf_token %}
+
   <form action = {% url 'about_image' image.name %} method = post>
+    {% csrf_token %}
       <input id="image" type="image" src= "{{image.img.url}}">
   </form>  
 
