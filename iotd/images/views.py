@@ -19,3 +19,13 @@ def image(request, image):
 	image_obj = GalleryImage.objects.get(id = image)
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/image.html', {'image' : image_obj, 'logos' : logos})
+
+def about(request):
+	image = GalleryImage.objects.latest('uploaded')
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/about.html', {'image' : image, 'logos' : logos})
+
+def about_image(request, image_id):
+	image = GalleryImage.objects.get(id = image_id)
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/image.html', {'image' : image, 'logos' : logos})	

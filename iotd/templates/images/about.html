@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+  <style>
+    
+  </style>
+{% endblock %}
+{% block additions %}
+  <form action = {% url 'about_image' image.name %} method = post>
+      <input id="image" type="image" src= "{{image.img.url}}">
+  </form>  
+
+    <script> 
+
+    </script>
+  {% endblock %}
+
+    <!--{% block content %}
+    <img src = "{{image.img.url}}">
+    {% endblock %}
+    -->
