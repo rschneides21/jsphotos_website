@@ -34,7 +34,6 @@
         var cell = row.cells[cell_num];
         cell.innerHTML += "<a href = {% url 'about_image' image.name %}><img src=" + img_urls[iterator] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>";
         iterator++;
-        {% if not forloop.last %},{% endif %}
     {% endfor %}
 
     </script>
