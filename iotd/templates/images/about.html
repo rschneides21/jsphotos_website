@@ -31,8 +31,10 @@
 
     {% for image in images %}
         row_num = Math.ceil(iterator / 3);
+        console.log("row num");
         console.log(row_num);
         cell_num = iterator % 3;
+        console.log("cell num");
         console.log(cell_num);
         var row = table.rows[row_num];
         var cell = row.cells[cell_num];
