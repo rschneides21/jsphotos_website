@@ -29,4 +29,4 @@ def aimage(request, image_id):
 	image = get_object_or_404(GalleryImage, pk = image_id)
 	images = GalleryImage.objects.all()
 	logos = WebsiteImage.objects.all()
-	return render(request, 'images/image.html', {'images' : images, 'logos' : logos})	
+	return render(request, 'images/image.html', {'image' : image, 'logos' : logos})	
