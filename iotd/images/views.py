@@ -21,9 +21,9 @@ def image(request, image):
 	return render(request, 'images/image.html', {'image' : image_obj, 'logos' : logos})
 
 def about(request):
-	image = GalleryImage.objects.latest('uploaded')
+	images = GalleryImage.objects.all()
 	logos = WebsiteImage.objects.all()
-	return render(request, 'images/about.html', {'image' : image, 'logos' : logos})
+	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
 
 def aimage(request, image_id):
 	image = get_object_or_404(GalleryImage, pk = image_id)
