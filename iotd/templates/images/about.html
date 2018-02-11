@@ -21,17 +21,20 @@
         // start new row
         if (i % 3 == 0){
            var row = table.insertRow(row_num++);
+           console.log("row created");
         }
         var cell = row.insertCell(0);
+        console.log("cell created");
         
     }
     row_num = 0;
 
     {% for image in images %}
         row_num = iterator / 3;
+        console.log(row_num);
         cell_num = iterator % 3;
+        console.log(cell_num);
         var row = table.rows[row_num];
-        console.log("test");
         var cell = row.cells[cell_num];
         cell.innerHTML += "<a href = {% url 'about_image' image.name %}><img src=" + img_urls[iterator] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>";
         iterator++;
