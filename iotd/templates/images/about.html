@@ -30,7 +30,7 @@
     row_num = 0;
 
     {% for image in images %}
-        row_num = Math.ceil(iterator / 3);
+        row_num = Math.floor(iterator / 3);
         console.log("row num");
         console.log(row_num);
         cell_num = iterator % 3;
