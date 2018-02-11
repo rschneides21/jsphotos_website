@@ -7,10 +7,7 @@
 {% endblock %}
 {% block additions %}
 
-  <form action = "{% url 'about_image' image.name %}" method = "post">
-    {% csrf_token %}
-      <input id="image" type="image" src= "{{image.img.url}}">
-  </form>  
+  <a href = "{% url 'about_image' image.name %}"><img src = "{{image.img.url}}"></a>
 
     <script> 
 
