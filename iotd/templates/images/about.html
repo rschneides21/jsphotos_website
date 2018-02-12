@@ -22,6 +22,7 @@
     }
     {% for image in images %}
         if(iterator % column_height == 0){
+          console.log("create column")
           //determines which cell of overarching row in which to create a new table (column)
           row.cells[array_length/iterator] = document.createElement("TABLE");
           for(var row_num = 0; row_num < column_height; row_num++){
@@ -30,7 +31,12 @@
           }
         }
         var col_num = Math.floor(iterator/column_height);
+        console.log("col_num");
+        console.log(col_num);
         var row_num = iterator % column_height;
+        console.log("row_num");
+        console.log(row_num);
+
 
         var col = row.cells[col_num];
         var inner_row = col.rows[row_num];
