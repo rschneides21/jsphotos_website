@@ -23,12 +23,14 @@
     }
     {% for image in images %}
         if(iterator % column_height == 0){
-          row.cells[iterator/array_length] = document.createElement("TABLE");
+          var new_column = document.createElement("TABLE");
+          
           var row_iterator = 0;
           for(row_iterator; row_iterator < column_height; row_iterator++){
-            var inner_row = row.cells[array_length/iterator].insertRow(row_iterator);
+            var inner_row = new_column.insertRow(row_iterator);
             var inner_cell = inner_row.insertCell(0);
           }
+          row.cells[iterator/array_length] = new_column;
         }
         var col_num = Math.floor(iterator/column_height);
         var row_num = iterator % column_height;
