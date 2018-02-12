@@ -7,39 +7,57 @@
 {% endblock %}
 {% block additions %}
   <table id = "image_table" style="max-width:80%" align = "center" cellpadding="0" cellspacing="0">
-    </table> 
+  </table> 
 
     <script> 
     // from https://groups.google.com/forum/#!topic/django-users/PI7F3_U4eC4
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
     var array_length = img_urls.length
     var table = document.getElementById("image_table");
+    var column_height = array_length / 3
+    var row = table.insertRow(0);
     var iterator = 0;
-    var row_num = 0;
-    var cell_num = 0;
-    for (i = 0; i < array_length; i++){
-        // start new row
-        if (i % 3 == 0){
-           var row = table.insertRow(row_num++);
-        }
-        var cell = row.insertCell(0);    
+    for (int i = 0; i < 3; i++){
+      var cell = row.insertCell(0);
     }
-    row_num = 0;
-
     {% for image in images %}
-        row_num = Math.floor(iterator / 3);
-        cell_num = iterator % 3;
-        var row = table.rows[row_num];
-        var cell = row.cells[cell_num];
-        cell.innerHTML += "<a href = '{% url 'about_image' image.name %}'><img src=" + img_urls[iterator] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>";
+        if(iterator % column_height == 0){
+          //determines which cell of overarching row in which to create a new table (column)
+          row.cells[array_length/iterator] = document.createElement("TABLE");
+          for(int row_num = 0; row_num < column_height; row_num++){
+            var inner_row = row.cells[array_length/iterator].insertRow(row_num);
+            var inner_cell = inner_row.insertCell(0);
+          }
+        }
+        var col_num = Math.floor(iterator/column_height);
+        var row_num = iterator % column_height;
+
+        var col = row.cells[col_num];
+        var inner_row = row.cells[col_num].rows[row_num];
+        var cell = inner_row.cells[0];
+        cell.innerHTML += "<a href = '{% url 'about_image' image.name %}'><img src=" + img_urls[iterator] + " width = '300' height = 'auto' style= 'max-width:100%; height:auto;'>";
         iterator++;
     {% endfor %}
+    
 
     </script>
 
   {% endblock %}
 
-    <!--{% block content %}
-    <img src = "{{image.img.url}}">
-    {% endblock %}
+    <!--
+1. get total number of images.
+2. Divide by 3
+3. Create table1 with 1 row and three columns
+4. In first column of table1: create new table2.
+  For i = 0; i < num_images / 3; i++
+    a. add new row to table2
+    b. add one column and image to occupy it
+5. In second column of table1: create new table3.
+  For i; i < (num_images / 3) * 2; i++
+    a. add new row to table3
+    b. add one column and image to occupy it
+6. In third column of table1: create new table4.
+  For i; i < num_images; i++
+    a. add new row to table4
+    b. add one column and image to occupy it
     -->
