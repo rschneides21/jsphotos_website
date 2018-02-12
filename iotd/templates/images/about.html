@@ -21,6 +21,7 @@
       var cell = row.insertCell(0);
     }
     {% for image in images %}
+        console.log(iterator % column_height);
         if(iterator % column_height == 0){
           console.log("create column")
           row.cells[array_length/iterator] = document.createElement("TABLE");
