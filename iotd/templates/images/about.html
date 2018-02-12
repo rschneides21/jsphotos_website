@@ -23,7 +23,6 @@
     {% for image in images %}
         if(iterator % column_height == 0){
           console.log("create column")
-          //determines which cell of overarching row in which to create a new table (column)
           row.cells[array_length/iterator] = document.createElement("TABLE");
           for(var row_num = 0; row_num < column_height; row_num++){
             var inner_row = row.cells[array_length/iterator].insertRow(row_num);
