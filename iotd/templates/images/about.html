@@ -21,10 +21,9 @@
       var cell = row.insertCell(0);
     }
     {% for image in images %}
-        console.log(iterator % column_height);
         if(iterator % column_height == 0){
           console.log("create column")
-          row.cells[array_length/iterator] = document.createElement("TABLE");
+          row.cells[iterator/array_length] = document.createElement("TABLE");
           for(var row_num = 0; row_num < column_height; row_num++){
             var inner_row = row.cells[array_length/iterator].insertRow(row_num);
             var inner_cell = inner_row.insertCell(0);
