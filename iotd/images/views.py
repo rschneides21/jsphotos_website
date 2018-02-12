@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from images.models import FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage
 from django.conf import settings
 from django.http import HttpResponse
