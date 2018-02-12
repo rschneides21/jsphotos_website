@@ -33,7 +33,7 @@
         var row_num = iterator % column_height;
 
         var col = row.cells[col_num];
-        var inner_row = row.cells[col_num].rows[row_num];
+        var inner_row = col.rows[row_num];
         var cell = inner_row.cells[0];
         cell.innerHTML += "<a href = '{% url 'about_image' image.name %}'><img src=" + img_urls[iterator] + " width = '300' height = 'auto' style= 'max-width:100%; height:auto;'>";
         iterator++;
