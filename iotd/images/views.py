@@ -21,7 +21,7 @@ def about(request):
 	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
 
 def aimage(request, image):
-	page_image = get_object_or_404(GalleryImage, pk = image)
+	page_image = get_object_or_404(GalleryImage, id = image)
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/image.html', {'image' : page_image, 'logos' : logos})
 
