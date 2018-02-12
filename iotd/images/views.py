@@ -20,7 +20,7 @@ def about(request):
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
 
-def aimage(request, slug):
+def aimage(request, image):
 	image = get_object_or_404(GalleryImage, pk = slug)
 	return HttpResponseRedirect(reverse('image', args=(image.id,)))
 
