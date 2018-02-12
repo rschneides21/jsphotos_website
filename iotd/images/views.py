@@ -21,10 +21,11 @@ def about(request):
 	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
 
 def aimage(request, image):
-	image = get_object_or_404(GalleryImage, pk = slug)
-	return HttpResponseRedirect(reverse('image', args=(image.id,)))
+	page_image = get_object_or_404(GalleryImage, pk = image)
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/image.html', {'image' : page_image, 'logos' : logos})
 
 def image(request, image):
-	image_obj = GalleryImage.objects.get(id = image)
+	image_obj = get_object_or_404(GalleryImage, pk = slug)
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/image.html', {'image' : image_obj, 'logos' : logos})
