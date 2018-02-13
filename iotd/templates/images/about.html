@@ -25,7 +25,7 @@
     console.log("test");
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
     var array_length = img_urls.length;
-    var column_height = array_length / 3;
+    var column_height = Math.ceil(array_length / 3);
     var iterator = 0;
 
     for (var i = 0; i < 3; i++){
