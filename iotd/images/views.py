@@ -12,7 +12,6 @@ def home(request):
 def gallery(request):
 	images = GalleryImage.objects.all()
 	logos = WebsiteImage.objects.all()
-	# {'images' : image} == key value pair, json?
 	return render(request ,'images/gallery.html', {'images' : images, 'logos' : logos})
 
 def about(request):
@@ -20,12 +19,9 @@ def about(request):
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
 
-def aimage(request, image):
+def gimage(request, image):
 	page_image = GalleryImage.objects.get(name__exact = image)
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/image.html', {'image' : page_image, 'logos' : logos})
 
-def image(request, image):
-	image_obj = get_object_or_404(GalleryImage, pk = slug)
-	logos = WebsiteImage.objects.all()
-	return render(request, 'images/image.html', {'image' : image_obj, 'logos' : logos})
+
