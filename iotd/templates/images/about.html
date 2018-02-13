@@ -7,38 +7,46 @@
 {% endblock %}
 {% block additions %}
   <table id = "image_table" style="max-width:80%" align = "center" cellpadding="0" cellspacing="0">
+      <tr>
+          <td>
+              <table id = "column_1"></table>
+          </td>
+          <td>
+              <table id = "column_2"></table>
+          </td>
+          <td>
+              <table id = "column_3"></table>
+          </td> 
+      </tr>
   </table> 
 
     <script> 
     // from https://groups.google.com/forum/#!topic/django-users/PI7F3_U4eC4
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
     var array_length = img_urls.length
-    var table = document.getElementById("image_table");
     var column_height = array_length / 3
-    var row = table.insertRow(0);
     var iterator = 0;
-    
+
     for (var i = 0; i < 3; i++){
-      var cell = row.insertCell(0);
+      var table_id = "column_" + toString(i);
+      var table = document.getElementById(table_id);
+
+      for (var i = 0; i < column_height; i++){
+          var row = table.insertRow(i);
+          var cell = row.insertCell(0);
+      }
     }
+    
     {% for image in images %}
-        if(iterator % column_height == 0){
-          var new_column = row.cells[iterator/array_length];
-          var column_num = toString(iterator/array_length)
-          new_column.innerHTML = " <table id = 'column_'" + column_num + " style='max-width:37.5%' align = 'center' cellpadding='0' cellspacing='0'></table>"  ;
-          var new_table = document.getElementById("column_" + column_num);
-          var row_iterator = 0;
-          for(row_iterator; row_iterator < column_height; row_iterator++){
-            var inner_row = new_table.insertRow(row_iterator);
-            var inner_cell = inner_row.insertCell(0);
-          }
-        }
+        var column_num = Math.floor(iterator/column_height);
+        var table_id = "column_" + toString(iterator/column_height);
+    
+        var table = document.getElementById(table_id);
+
         var col_num = Math.floor(iterator/column_height);
         var row_num = iterator % column_height;
 
-
-        var col = row.cells[col_num];
-        var inner_row = col.rows[row_num];
+        var inner_row = table.rows[row_num];
         var cell = inner_row.cells[0];
         cell.innerHTML += "<a href = '{% url 'about_image' image.name %}'><img src=" + img_urls[iterator] + " width = '300' height = 'auto' style= 'max-width:100%; height:auto;'>";
         iterator++;
