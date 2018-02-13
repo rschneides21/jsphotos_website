@@ -2,7 +2,35 @@
 
 {% block extra_css %}
   <style>
-    
+    td.lighten {
+    background: white;
+  }
+
+  td.lighten img {
+    -webkit-transition: all 0.2s linear;
+       -moz-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+         -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+  }
+
+  td.lighten:hover img{
+    opacity : 0.7;
+  }
+
+  td.lighten:hover .img-description{
+    visibility: visible;
+      opacity: 1;
+  }
+
+  td {
+    border-right: 5px solid transparent;
+      -webkit-background-clip: padding;
+         -moz-background-clip: padding;
+          -ms-background-clip: padding;
+           -o-background-clip: padding-box;
+              background-clip: padding-box;
+  }
   </style>
 {% endblock %}
 {% block additions %}
