@@ -21,16 +21,27 @@
   </table> 
 
     <script> 
+    // from https://groups.google.com/forum/#!topic/django-users/PI7F3_U4eC4
     console.log("test");
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
-    var array_length = img_urls.length
-    var column_height = array_length / 3
+    var array_length = img_urls.length;
+    var column_height = array_length / 3;
     var iterator = 0;
 
     for (var i = 0; i < 3; i++){
-      var table_id = "column_" + toString(i);
+      var table_id = "";
+      switch(i){
+        case 1 : 
+          table_id = "column_1";
+          break;
+        case 2 :
+          table_id = "column_2";
+          break;
+        case 3 :
+          table_id = "column_3";
+          break;  
+      }
       var table = document.getElementById(table_id);
-
       for (var j = 0; j < column_height; j++){
           var row = table.insertRow(j);
           var cell = row.insertCell(0);
@@ -39,7 +50,18 @@
     
     {% for image in images %}
         var column_num = Math.floor(iterator/column_height);
-        var table_id = "column_" + toString(column_num);
+        var table_id = "";
+        switch(column_num){
+        case 1 : 
+          table_id = "column_1";
+          break;
+        case 2 :
+          table_id = "column_2";
+          break;
+        case 3 :
+          table_id = "column_3";
+          break;  
+        }
     
         var table = document.getElementById(table_id);
 
@@ -56,21 +78,3 @@
     </script>
 
   {% endblock %}
-
-    <!--
-1. get total number of images.
-2. Divide by 3
-3. Create table1 with 1 row and three columns
-4. In first column of table1: create new table2.
-  For i = 0; i < num_images / 3; i++
-    a. add new row to table2
-    b. add one column and image to occupy it
-5. In second column of table1: create new table3.
-  For i; i < (num_images / 3) * 2; i++
-    a. add new row to table3
-    b. add one column and image to occupy it
-6. In third column of table1: create new table4.
-  For i; i < num_images; i++
-    a. add new row to table4
-    b. add one column and image to occupy it
-    -->
