@@ -21,7 +21,7 @@
   </table> 
 
     <script> 
-    // from https://groups.google.com/forum/#!topic/django-users/PI7F3_U4eC4
+    console.log("test");
     var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
     var array_length = img_urls.length
     var column_height = array_length / 3
@@ -39,7 +39,7 @@
     
     {% for image in images %}
         var column_num = Math.floor(iterator/column_height);
-        var table_id = "column_" + toString(iterator/column_height);
+        var table_id = "column_" + toString(column_num);
     
         var table = document.getElementById(table_id);
 
