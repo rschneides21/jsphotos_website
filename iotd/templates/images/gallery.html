@@ -2,11 +2,11 @@
 
 {% block extra_css %}
   <style>
-    td.lighten {
+    gallery.lighten {
     background: white;
   }
 
-  td.lighten img {
+  gallery.lighten img {
     -webkit-transition: all 0.2s linear;
        -moz-transition: all 0.2s linear;
         -ms-transition: all 0.2s linear;
@@ -14,16 +14,16 @@
             transition: all 0.2s linear;
   }
 
-  td.lighten:hover img{
+  gallery.lighten:hover img{
     opacity : 0.7;
   }
 
-  td.lighten:hover .img-description{
+  gallery.lighten:hover .img-description{
     visibility: visible;
       opacity: 1;
   }
 
-  td {
+  gallery {
     border-right: 5px solid transparent;
       -webkit-background-clip: padding;
          -moz-background-clip: padding;
@@ -98,7 +98,7 @@
 
         var inner_row = table.rows[row_num];
         var cell = inner_row.cells[0];
-        cell.innerHTML += "<a href = '{% url 'gallery_image' image.name %}'><img src=" + img_urls[iterator] + " width = '300' height = 'auto' style= 'max-width:100%; height:auto;'>";
+        cell.innerHTML += "<a href = '{% url 'gallery_image' image.name %}'><img src=" + img_urls[iterator] + " class = 'gallery' width = '300' height = 'auto' style= 'max-width:100%; height:auto;'>";
         iterator++;
     {% endfor %}
     
