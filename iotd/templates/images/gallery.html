@@ -6,6 +6,10 @@
     display: inline-block;
   }
 
+  .display{
+    display: inline-block;
+  }
+
   gallery.lighten {
     background: white;
   }
@@ -38,12 +42,13 @@
   </style>
 {% endblock %}
 {% block additions %}
-  <div class = "vertical menu">
-    <a href = {%url 'home'%}> home </a>
-    <a href = {%url 'gallery'%}> gallery </a>
-  </div>
+  <div class = "display">
+    <div class = "vertical menu">
+      <a href = {%url 'home'%}> home </a>
+      <a href = {%url 'gallery'%}> gallery </a>
+    </div>
 
-  <table id = "image_table" style="max-width:80%" align = "center" cellpadding="0" cellspacing="0">
+    <table id = "image_table" style="max-width:80%" align = "center" cellpadding="0" cellspacing="0">
       <tr>
           <td style = "vertical-align: top; padding-right: 5px;">
               <table id = "column_1" cellpadding="0" cellspacing="0"></table>
@@ -55,8 +60,8 @@
               <table id = "column_3" cellpadding="0" cellspacing="0"></table>
           </td> 
       </tr>
-  </table> 
-
+    </table> 
+  </div>
     <script> 
     // from https://groups.google.com/forum/#!topic/django-users/PI7F3_U4eC4
     console.log("test");
