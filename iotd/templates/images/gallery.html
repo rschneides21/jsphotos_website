@@ -14,7 +14,7 @@
   }
 
   #empty-col{
-    padding-left: 50px;
+    padding-left: 55px;
   }
 
   .vertical-menu a{
@@ -129,7 +129,7 @@
 
         var inner_row = table.rows[row_num];
         var cell = inner_row.cells[0];
-        cell.innerHTML += "<a href = '{% url 'gallery_image' image.name %}'><img src=" + img_urls[iterator] + " class = 'gallery' width = '330' height = 'auto' style= 'max-width:100%; height:auto;'>";
+        cell.innerHTML += "<a href = '{% url 'gallery_image' image.name %}'><img src=" + img_urls[iterator] + " class = 'gallery' width = '325' height = 'auto' style= 'max-width:100%; height:auto;'>";
         iterator++;
     {% endfor %}
     
