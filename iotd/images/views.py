@@ -38,14 +38,14 @@ def gallery_vermont(request):
 
 def gallery(request, gallery_cat):
 	if(gallery_cat == 'abstract'):
-		return HttpResponseRedirect(gallery-abstract)
+		return HttpResponseRedirect(gallery_abstract)
 	elif(gallery_cat == "nature"):
-		return HttpResponseRedirect(gallery-nature)
+		return HttpResponseRedirect(gallery_nature)
 	elif(gallery_cat == "urban"):
-		return HttpResponseRedirect(gallery-urban)		
+		return HttpResponseRedirect(gallery_urban)		
 	elif(gallery_cat == "vermont"):
-		return HttpResponseRedirect(gallery-vermont)			
-	else: return HttpResponseRedirect(gallery-abstract)
+		return HttpResponseRedirect(gallery_vermont)			
+	else: return HttpResponseRedirect(gallery_abstract)
 
 def gimage(request, image):
 	page_image = GalleryImage.objects.get(name__exact = image)
