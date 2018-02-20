@@ -45,7 +45,7 @@ def gallery(request, gallery_cat):
 		return HttpResponseRedirect(gallery-urban)		
 	elif(gallery_cat == "vermont"):
 		return HttpResponseRedirect(gallery-vermont)			
-	else return HttpResponseRedirect(gallery-abstract)
+	else: return HttpResponseRedirect(gallery-abstract)
 
 def gimage(request, image):
 	page_image = GalleryImage.objects.get(name__exact = image)
