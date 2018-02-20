@@ -19,14 +19,14 @@ def about(request):
 
 def gallery(request, gallery_cat):
 	if(gallery_cat == "abstract"):
-		images = AbstractImage.objects.all()
+		images = AbstractImage.objects.all().order_by('-order')
 	elif(gallery_cat == "nature"):
-		images = NatureImage.objects.all()
+		images = NatureImage.objects.all().order_by('-order')
 	elif(gallery_cat == "urban"):
-		images = UrbanImage.objects.all()		
+		images = UrbanImage.objects.all().order_by('-order')		
 	elif(gallery_cat == "vermont"):
-		images = VermontImage.objects.all()				
-	else: images = AbstractImage.objects.all()
+		images = VermontImage.objects.all().order_by('-order')				
+	else: images = AbstractImage.objects.all().order_by('-order')
 
 	logos = WebsiteImage.objects.all()
 
