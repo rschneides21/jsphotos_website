@@ -16,17 +16,6 @@ def about(request):
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
 
-def gallery(request, gallery_cat):
-	if(gallery_cat == "abstract"):
-		return redirect('gallery_abstract')
-	elif(gallery_cat == "nature"):
-		return redirect('gallery_nature')
-	elif(gallery_cat == "urban"):
-		return redirect('gallery_urban')		
-	elif(gallery_cat == "vermont"):
-		return redirect('gallery_vermont')			
-	else: return redirect('gallery_abstract')
-
 def gallery_abstract(request):
 	images = AbstractImages.objects.all()
 	logos = WebsiteImage.object.all()
@@ -46,6 +35,21 @@ def gallery_vermont(request):
 	images = VermontImages.objects.all()
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
+
+def gallery(request, gallery_cat):
+	if(gallery_cat == "abstract"):
+		images = AbstractImages.objects.all()
+	elif(gallery_cat == "nature"):
+		images = NatureImages.objects.all()
+	elif(gallery_cat == "urban"):
+		images = UrbanImages.objects.all()		
+	elif(gallery_cat == "vermont"):
+		images = VermontImages.objects.all()				
+	else: images = AbstractImages.objects.all()
+
+	logos = WebsiteImage.objects.all()
+
+	return render(request, 'images/gallery.html', {'images': images, 'logos': logos, 'gallery_cat' : gallery_cat})
 
 def gimage(request, image):
 	page_image = GalleryImage.objects.get(name__exact = image)

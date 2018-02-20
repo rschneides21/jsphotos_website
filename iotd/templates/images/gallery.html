@@ -64,10 +64,88 @@
   </style>
 {% endblock %}
 {% block additions %}
+  <div class = "display">
+    <div class = "display-elements">
+      <div class = "vertical-menu">
+        <a href = {%url 'gallery' "abstract"%}> Abstract </a>
+        <a href = {%url 'gallery' "nature"%}> Nature </a>
+        <a href = {%url 'gallery' "urban"%}> Urban </a>
+        <a href = {%url 'gallery' "vermont"%}> Vermont </a>
+      </div>
+    </div>
+    <div class = "display-elements">
+      <table id = "image_table" style="max-width:100%; padding-left: 10px;" align = "center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td style = "vertical-align: top; padding-right: 5px;">
+              <table id = "column_1" cellpadding="2" cellspacing="0"></table>
+            </td>
+            <td style = "vertical-align: top; padding-right: 5px;">
+                <table id = "column_2" cellpadding="2" cellspacing="0"></table>
+            </td>
+            <td style = "vertical-align: top; padding-right: 5px;">
+                <table id = "column_3" cellpadding="2" cellspacing="0"></table>
+            </td> 
+        </tr>
+     </table> 
+    </div>
+    <div class = "display-elements" id = "empty-col">
+      
+    </div>
+  </div>
 
-{% endblock %}
+  <script> 
+    // from https://groups.google.com/forum/#!topic/django-users/PI7F3_U4eC4
+    console.log("test");
+    var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
+    var array_length = img_urls.length;
+    var column_height = Math.ceil(array_length / 3);
+    var iterator = 0;
 
-{%block javascript%}
-{%endblock%}
+    for (var i = 0; i < 3; i++){
+      var table_id = "";
+      switch(i){
+        case 0 : 
+          table_id = "column_1";
+          break;
+        case 1 :
+          table_id = "column_2";
+          break;
+        case 2 :
+          table_id = "column_3";
+          break;  
+      }
+      var table = document.getElementById(table_id);
+      for (var j = 0; j < column_height; j++){
+          var row = table.insertRow(j);
+          var cell = row.insertCell(0);
+      }
+    }
+    
+    {% for image in images %}
+        var column_num = Math.floor(iterator % 3);
+        var table_id = "";
+        switch(column_num){
+        case 0 : 
+          table_id = "column_1";
+          break;
+        case 1 :
+          table_id = "column_2";
+          break;
+        case 2 :
+          table_id = "column_3";
+          break;  
+        }
+    
+        var table = document.getElementById(table_id);
+        var row_num = Math.floor(iterator/3);
 
- 
+        var inner_row = table.rows[row_num];
+        var cell = inner_row.cells[0];
+        cell.innerHTML += "<a href = '{% url 'gallery_image' image.name %}'><img src=" + img_urls[iterator] + " class = 'gallery' width = '327' height = 'auto' style= 'max-width:100%; height:auto;'>";
+        iterator++;
+    {% endfor %}
+    {% endblock %}
+
+    </script>
+
+
