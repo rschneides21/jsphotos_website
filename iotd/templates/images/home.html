@@ -196,10 +196,10 @@
 		 document.getElementById("Jeff-Schneiderman").innerHTML += "<a href = {% url 'home'%}><img src= " + logos_urls[1] + " alt='logo' class = 'center' width = 243 height = 18 style= 'max-width:100%; height:auto;'></a>"
 
 		 var img_urls = [{% for image in images %}"{{ image.img.url }}"{% if not forloop.last %},{% endif %}{% endfor %}];
-		 document.getElementById("ul").innerHTML += "<img src = " + img_urls[1] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
-		 document.getElementById("ur").innerHTML += "<img src = " + img_urls[2] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
-		 document.getElementById("bl").innerHTML += "<img src = " + img_urls[0] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
-		 document.getElementById("br").innerHTML += "<img src = " + img_urls[3] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'>"
+		 document.getElementById("ul").innerHTML += "<a href = {%url 'gallery' 'abstract'%}><img src = " + img_urls[1] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'></a>"
+		 document.getElementById("ur").innerHTML += "<a href = {%url 'gallery' 'nature'%}><img src = " + img_urls[2] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'></a>"
+		 document.getElementById("bl").innerHTML += "<a href = {%url 'gallery' 'urban'%}><img src = " + img_urls[0] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'></a>"
+		 document.getElementById("br").innerHTML += "<a href = {%url 'gallery' 'vermont'%}><img src = " + img_urls[3] + " width = '500' height = '303' style= 'max-width:100%; height:auto;'></a>"
 	</script>	
 
     
