@@ -17,8 +17,8 @@ class GalleryImageAdmin(admin.ModelAdmin):
 
 @admin.register(AbstractImages)
 class AbstractImagesAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'category', 'uploaded')
-    ordering = ('-category',)
+    list_display = ('thumbnail', 'name', 'order', 'uploaded')
+    ordering = ('-order',)
     def thumbnail(self, obj):
         if obj.img:
             return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
@@ -29,8 +29,8 @@ class AbstractImagesAdmin(admin.ModelAdmin):
 
 @admin.register(NatureImages)
 class NatureImagesAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'category', 'uploaded')
-    ordering = ('-category',)
+    list_display = ('thumbnail', 'name', 'order','uploaded')
+    ordering = ('-order',)
     def thumbnail(self, obj):
         if obj.img:
             return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
@@ -41,8 +41,8 @@ class NatureImagesAdmin(admin.ModelAdmin):
 
 @admin.register(UrbanImages)
 class UrbanImagesAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'category', 'uploaded')
-    ordering = ('-category',)
+    list_display = ('thumbnail', 'name', 'order', 'uploaded')
+    ordering = ('-order',)
     def thumbnail(self, obj):
         if obj.img:
             return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
@@ -53,8 +53,8 @@ class UrbanImagesAdmin(admin.ModelAdmin):
 
 @admin.register(VermontImages)
 class VermontImagesAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'category', 'uploaded')
-    ordering = ('-category',)
+    list_display = ('thumbnail', 'name', 'order', 'uploaded')
+    ordering = ('-order',)
     def thumbnail(self, obj):
         if obj.img:
             return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)

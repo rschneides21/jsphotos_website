@@ -11,7 +11,7 @@ urlpatterns = [
     #TC1 added images path, not sure about 'images.urls'
     url(r'^gallery/', include('images.urls')),
     url(r'^about/', images.views.about, name = 'about'),
-    url(r'^(?P<image>[-\w]+)/$', images.views.gallery, name = 'gallery'),
+    url(r'^(?P<gallery>[-\w]+)/$', images.views.gallery, name = 'gallery'),
     url(r'^(?P<image>[-\w]+)/$', images.views.gimage, name = 'gallery_image'),
     url(r'^$', images.views.home, name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
