@@ -36,7 +36,7 @@ def gallery_vermont(request, category):
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
 
-def gallery(request, category):
+def gallery(request, category, test):
 	options = {
 		"abstract" : gallery-abstract,
 		"nature"   : gallery-nature,
