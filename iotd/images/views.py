@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from images.models import FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage, AbstractImages, NatureImages, UrbanImages, VermontImages
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 
 def home(request):
     logos = WebsiteImage.objects.all()
@@ -42,7 +43,7 @@ def gallery(request, category):
 		"urban"    : gallery-urban,
 		"vermont"  : gallery-vermont,
 	}
-	return redirect(options[category])
+	return HttpResponseRedirect(reverse(options[category]))
 
 def gimage(request, image):
 	page_image = GalleryImage.objects.get(name__exact = image)
