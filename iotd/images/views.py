@@ -37,13 +37,15 @@ def gallery_vermont(request):
 	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
 
 def gallery(request, gallery_cat):
-	options = {
-		"abstract" : gallery-abstract,
-		"nature"   : gallery-nature,
-		"urban"   : gallery-urban,
-		"vermont"  : gallery-vermont,
-	}
-	return HttpResponseRedirect(reverse(options[gallery_cat]))
+	if(gallery_cat == "abstract"):
+		return HttpResponseRedirect(gallery-abstract)
+	elif(gallery_cat == "nature"):
+		return HttpResponseRedirect(gallery-nature)
+	elif(gallery_cat == "urban"):
+		return HttpResponseRedirect(gallery-urban)		
+	elif(gallery_cat == "vermont"):
+		return HttpResponseRedirect(gallery-vermont)			
+	else return HttpResponseRedirect(gallery-abstract)
 
 def gimage(request, image):
 	page_image = GalleryImage.objects.get(name__exact = image)
