@@ -12,6 +12,6 @@ urlpatterns = [
     url(r'^gallery/', include('images.urls')),
     url(r'^about/', images.views.about, name = 'about'),
     url(r'^(?P<gallery_cat>[-\w]+)/$', images.views.gallery, name = 'gallery'),
-    url(r'^(?P<image>[-\w]+)/$', images.views.gimage, name = 'gallery_image'),
+    url(r'^(?P<image_cat>[-\w]+)/(?P<image>[-\w]+)/$', images.views.gimage, name = 'gallery_image'),
     url(r'^$', images.views.home, name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

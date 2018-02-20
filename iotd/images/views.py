@@ -32,15 +32,15 @@ def gallery(request, gallery_cat):
 
 	return render(request, 'images/gallery.html', {'images': images, 'logos': logos, 'gallery_cat' : gallery_cat})
 
-def gimage(request, image):
-	if(image.category_id == "abstract"):
-		page_image = AbstractImage.objects.get(name__exact = image.name)
-	elif(image.category_id == "nature"):
-		page_image = NatureImage.objects.get(name__exact = image.name)
-	elif(image.category_id == "urban"):
-		page_image = UrbanImage.objects.get(name__exact = image.name)
-	elif(image.category_id == "vermont"):
-		page_image = VermontImage.objects.get(name__exact = image.name)			
+def gimage(request, image_cat, image):
+	if(image_cat == "abstract"):
+		page_image = AbstractImage.objects.get(name__exact = image)
+	elif(image_cat == "nature"):
+		page_image = NatureImage.objects.get(name__exact = image)
+	elif(image_cat == "urban"):
+		page_image = UrbanImage.objects.get(name__exact = image)
+	elif(image_cat == "vermont"):
+		page_image = VermontImage.objects.get(name__exact = image)			
 
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/image.html', {'image' : page_image, 'logos' : logos})
