@@ -16,22 +16,22 @@ def about(request):
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
 
-def gallery_abstract(request, category):
+def gallery_abstract(request):
 	images = AbstractImages.objects.all()
 	logos = WebsiteImage.object.all()
 	return render(requst, 'images/abstract.html', {'images': images, 'logos' : logos})
 
-def gallery_nature(request, category):
+def gallery_nature(request):
 	image = NatureImages.objects.all()
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/nature.html', {'images': images, 'logos' : logos})
 
-def gallery_urban(request, category):
+def gallery_urban(request):
 	images = UrbanImages.objects.all()
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/urban.html', {'images': images, 'logos': logos})
 
-def gallery_vermont(request, category):
+def gallery_vermont(request):
 	images = VermontImages.objects.all()
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
