@@ -18,27 +18,31 @@ class GalleryImage(models.Model):
 	uploaded = models.DateTimeField(auto_now=True)
 	img = models.ImageField(upload_to="")
 
-class AbstractImages(models.Model):
+class AbstractImage(models.Model):
 	name = models.CharField(max_length=200)
-	order = models.CharField(max_length=100)
+	order = models.IntegerField()
+	category_id = models.CharField(max_length=200)
 	uploaded = models.DateTimeField(auto_now=True)
 	img = models.ImageField(upload_to="")
 
-class NatureImages(models.Model):
+class NatureImage(models.Model):
 	name = models.CharField(max_length=200)
-	order = models.CharField(max_length=100)
+	order = models.IntegerField()
+	category_id = models.CharField(max_length=200)
 	uploaded = models.DateTimeField(auto_now=True)
 	img = models.ImageField(upload_to="")
 
-class UrbanImages(models.Model):
+class UrbanImage(models.Model):
 	name = models.CharField(max_length=200)
-	order = models.CharField(max_length=100)
+	order = models.IntegerField()
+	category_id = models.CharField(max_length=200)
 	uploaded = models.DateTimeField(auto_now=True)
 	img = models.ImageField(upload_to="")
 
-class VermontImages(models.Model):
+class VermontImage(models.Model):
 	name = models.CharField(max_length=200)
-	order = models.CharField(max_length=100)
+	order = models.IntegerField()
+	category_id = models.CharField(max_length=200)
 	uploaded = models.DateTimeField(auto_now=True)
 	img = models.ImageField(upload_to="")
 

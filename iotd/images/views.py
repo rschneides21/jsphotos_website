@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from images.models import FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage, AbstractImages, NatureImages, UrbanImages, VermontImages
+from images.models import FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage, AbstractImage, NatureImage, UrbanImage, VermontImage
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -52,7 +52,15 @@ def gallery(request, gallery_cat):
 	return render(request, 'images/gallery.html', {'images': images, 'logos': logos, 'gallery_cat' : gallery_cat})
 
 def gimage(request, image):
-	page_image = GalleryImage.objects.get(name__exact = image)
+	if(image.category_id == "abstract"):
+		page_image = AbstractImages.objects.get(name__exact = image.name)
+	elif(image.category_id == "nature"):
+		page_image = NatureImages.objects.get(name__exact = image.name)
+	elif(image.category_id == "urban"):
+		page_image = UrbanImages.objects.get(name__exact = image.name)
+	elif(image.category_id == "vermont"):
+		page_image = VermontImages.objects.get(name__exact = image.name)			
+
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/image.html', {'image' : page_image, 'logos' : logos})
 

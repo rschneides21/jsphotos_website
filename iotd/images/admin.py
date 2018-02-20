@@ -1,5 +1,5 @@
 from django.contrib import admin
-from images.models import AbstractImages, NatureImages, UrbanImages, VermontImages, FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage
+from images.models import AbstractImage, NatureImage, UrbanImage, VermontImage, FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage
 
 # Register your models here.
 
@@ -15,9 +15,9 @@ class GalleryImageAdmin(admin.ModelAdmin):
 
     thumbnail.allow_tags = True
 
-@admin.register(AbstractImages)
-class AbstractImagesAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'order', 'uploaded')
+@admin.register(AbstractImage)
+class AbstractImageAdmin(admin.ModelAdmin):
+    list_display = ('thumbnail', 'name', 'order', 'category_id', 'uploaded')
     ordering = ('-order',)
     def thumbnail(self, obj):
         if obj.img:
@@ -27,9 +27,9 @@ class AbstractImagesAdmin(admin.ModelAdmin):
 
     thumbnail.allow_tags = True
 
-@admin.register(NatureImages)
-class NatureImagesAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'order','uploaded')
+@admin.register(NatureImage)
+class NatureImageAdmin(admin.ModelAdmin):
+    list_display = ('thumbnail', 'name', 'order', 'category_id','uploaded')
     ordering = ('-order',)
     def thumbnail(self, obj):
         if obj.img:
@@ -39,9 +39,9 @@ class NatureImagesAdmin(admin.ModelAdmin):
 
     thumbnail.allow_tags = True
 
-@admin.register(UrbanImages)
-class UrbanImagesAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'order', 'uploaded')
+@admin.register(UrbanImage)
+class UrbanImageAdmin(admin.ModelAdmin):
+    list_display = ('thumbnail', 'name', 'order', 'category_id', 'uploaded')
     ordering = ('-order',)
     def thumbnail(self, obj):
         if obj.img:
@@ -51,9 +51,9 @@ class UrbanImagesAdmin(admin.ModelAdmin):
 
     thumbnail.allow_tags = True
 
-@admin.register(VermontImages)
-class VermontImagesAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'order', 'uploaded')
+@admin.register(VermontImage)
+class VermontImageAdmin(admin.ModelAdmin):
+    list_display = ('thumbnail', 'name', 'order', 'category_id', 'uploaded')
     ordering = ('-order',)
     def thumbnail(self, obj):
         if obj.img:
