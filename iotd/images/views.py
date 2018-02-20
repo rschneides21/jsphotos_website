@@ -16,36 +16,17 @@ def about(request):
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
 
-def gallery_abstract(request):
-	images = AbstractImages.objects.all()
-	logos = WebsiteImage.object.all()
-	return render(requst, 'images/abstract.html', {'images': images, 'logos' : logos})
-
-def gallery_nature(request):
-	image = NatureImages.objects.all()
-	logos = WebsiteImage.objects.all()
-	return render(request, 'images/nature.html', {'images': images, 'logos' : logos})
-
-def gallery_urban(request):
-	images = UrbanImages.objects.all()
-	logos = WebsiteImage.objects.all()
-	return render(request, 'images/urban.html', {'images': images, 'logos': logos})
-
-def gallery_vermont(request):
-	images = VermontImages.objects.all()
-	logos = WebsiteImage.objects.all()
-	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
 
 def gallery(request, gallery_cat):
 	if(gallery_cat == "abstract"):
-		images = AbstractImages.objects.all()
+		images = AbstractImage.objects.all()
 	elif(gallery_cat == "nature"):
-		images = NatureImages.objects.all()
+		images = NatureImage.objects.all()
 	elif(gallery_cat == "urban"):
-		images = UrbanImages.objects.all()		
+		images = UrbanImage.objects.all()		
 	elif(gallery_cat == "vermont"):
-		images = VermontImages.objects.all()				
-	else: images = AbstractImages.objects.all()
+		images = VermontImage.objects.all()				
+	else: images = AbstractImage.objects.all()
 
 	logos = WebsiteImage.objects.all()
 
@@ -53,13 +34,13 @@ def gallery(request, gallery_cat):
 
 def gimage(request, image):
 	if(image.category_id == "abstract"):
-		page_image = AbstractImages.objects.get(name__exact = image.name)
+		page_image = AbstractImage.objects.get(name__exact = image.name)
 	elif(image.category_id == "nature"):
-		page_image = NatureImages.objects.get(name__exact = image.name)
+		page_image = NatureImage.objects.get(name__exact = image.name)
 	elif(image.category_id == "urban"):
-		page_image = UrbanImages.objects.get(name__exact = image.name)
+		page_image = UrbanImage.objects.get(name__exact = image.name)
 	elif(image.category_id == "vermont"):
-		page_image = VermontImages.objects.get(name__exact = image.name)			
+		page_image = VermontImage.objects.get(name__exact = image.name)			
 
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/image.html', {'image' : page_image, 'logos' : logos})
