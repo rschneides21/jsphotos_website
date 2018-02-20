@@ -9,6 +9,32 @@ def home(request):
     print(settings.STATIC_ROOT)
     return render(request, 'images/home.html',
                               { 'logos' : logos, 'images' : images})
+
+def about(request):
+	images = GalleryImage.objects.all()
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
+
+def gallery_abstract(request):
+	images = AbstractImages.objects.all()
+	logos = WebsiteImage.object.all()
+	return render(requst, 'images/abstract.html', {'images': images, 'logos' : logos})
+
+def gallery_nature(request):
+	image = NatureImages.objects.all()
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/nature.html', {'images': images, 'logos' : logos})
+
+def gallery_urban(request):
+	images = UrbanImages.objects.all()
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/urban.html', {'images': images, 'logos': logos})
+
+def gallery_vermont(request):
+	images = VermontImages.objects.all()
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
+
 def gallery(request, category):
 	options = {
 		"abstract" : gallery-abstract,
@@ -17,31 +43,6 @@ def gallery(request, category):
 		"vermont"  : gallery-vermont,
 	}
 	return redirect(options[category])
-
-def about(request):
-	images = GalleryImage.objects.all()
-	logos = WebsiteImage.objects.all()
-	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
-
-def gallery-abstract(request):
-	images = AbstractImages.objects.all()
-	logos = WebsiteImage.object.all()
-	return render(requst, 'images/abstract.html', {'images': images, 'logos' : logos})
-
-def gallery-nature(request):
-	image = NatureImages.objects.all()
-	logos = WebsiteImage.objects.all()
-	return render(request, 'images/nature.html', {'images': images, 'logos' : logos})
-
-def gallery-urban(request):
-	images = UrbanImages.objects.all()
-	logos = WebsiteImage.objects.all()
-	return render(request, 'images/urban.html', {'images': images, 'logos': logos})
-
-def gallery-vermont(request):
-	images = VermontImages.objects.all()
-	logos = WebsiteImage.objects.all()
-	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
 
 def gimage(request, image):
 	page_image = GalleryImage.objects.get(name__exact = image)
