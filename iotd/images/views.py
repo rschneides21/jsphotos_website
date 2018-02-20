@@ -36,14 +36,14 @@ def gallery_vermont(request, category):
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
 
-def gallery(request, **kwargs):
+def gallery(request, category):
 	options = {
 		"abstract" : gallery-abstract,
 		"nature"   : gallery-nature,
 		"urban"    : gallery-urban,
 		"vermont"  : gallery-vermont,
 	}
-	return HttpResponseRedirect(reverse(options[**kwargs]))
+	return HttpResponseRedirect(reverse(options[category]))
 
 def gimage(request, image):
 	page_image = GalleryImage.objects.get(name__exact = image)
