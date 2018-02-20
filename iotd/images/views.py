@@ -38,10 +38,10 @@ def gallery_vermont(request, category):
 
 def gallery(request, gallery_cat):
 	options = {
-		"abstract" : gallery-abstract,
-		"nature"   : gallery-nature,
-		"urban"    : gallery-urban,
-		"vermont"  : gallery-vermont,
+		'abstract' : gallery-abstract,
+		'nature'   : gallery-nature,
+		'urban'   : gallery-urban,
+		'vermont'  : gallery-vermont,
 	}
 	return HttpResponseRedirect(reverse(options[gallery_cat]))
 
