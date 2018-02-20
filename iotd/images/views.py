@@ -37,7 +37,7 @@ def gallery_vermont(request):
 	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
 
 def gallery(request, gallery_cat):
-	if(gallery_cat == "abstract"):
+	if(gallery_cat == 'abstract'):
 		return HttpResponseRedirect(gallery-abstract)
 	elif(gallery_cat == "nature"):
 		return HttpResponseRedirect(gallery-nature)
