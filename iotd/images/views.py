@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from images.models import FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage
+from images.models import FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage, AbstractImages, NatureImages, UrbanImages, VermontImages
 from django.conf import settings
 from django.http import HttpResponse
 
@@ -9,15 +9,39 @@ def home(request):
     print(settings.STATIC_ROOT)
     return render(request, 'images/home.html',
                               { 'logos' : logos, 'images' : images})
-def gallery(request):
-	images = GalleryImage.objects.all()
-	logos = WebsiteImage.objects.all()
-	return render(request ,'images/gallery.html', {'images' : images, 'logos' : logos})
+def gallery(request, category):
+	options = {
+		"abstract" : gallery-abstract,
+		"nature"   : gallery-nature,
+		"urban"    : gallery-urban,
+		"vermont"  : gallery-vermont,
+	}
+	return redirect(options[category])
 
 def about(request):
 	images = GalleryImage.objects.all()
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
+
+def gallery-abstract(request):
+	images = AbstractImages.objects.all()
+	logos = WebsiteImage.object.all()
+	return render(requst, 'images/abstract.html', {'images': images, 'logos' : logos})
+
+def gallery-nature(request):
+	image = NatureImages.objects.all()
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/nature.html', {'images': images, 'logos' : logos})
+
+def gallery-urban(request):
+	images = UrbanImages.objects.all()
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/urban.html', {'images': images, 'logos': logos})
+
+def gallery-vermont(request):
+	images = VermontImages.objects.all()
+	logos = WebsiteImage.objects.all()
+	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
 
 def gimage(request, image):
 	page_image = GalleryImage.objects.get(name__exact = image)
