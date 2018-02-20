@@ -144,8 +144,7 @@
         cell.innerHTML += "<a href = '{% url 'gallery_image' image.name %}'><img src=" + img_urls[iterator] + " class = 'gallery' width = '327' height = 'auto' style= 'max-width:100%; height:auto;'>";
         iterator++;
     {% endfor %}
-    {% endblock %}
 
     </script>
-
+   {% endblock %}
 
