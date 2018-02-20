@@ -16,15 +16,6 @@ def about(request):
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/about.html', {'images' : images, 'logos' : logos})
 
-def gallery(request, gallery_cat):
-	options = {
-		"abstract" : gallery-abstract,
-		"nature"   : gallery-nature,
-		"urban"   : gallery-urban,
-		"vermont"  : gallery-vermont,
-	}
-	return HttpResponseRedirect(reverse(options[gallery_cat]))
-
 def gallery_abstract(request):
 	images = AbstractImages.objects.all()
 	logos = WebsiteImage.object.all()
@@ -45,6 +36,14 @@ def gallery_vermont(request):
 	logos = WebsiteImage.objects.all()
 	return render(request, 'images/vermont.html', {'images': images, 'logos': logos})
 
+def gallery(request, gallery_cat):
+	options = {
+		"abstract" : gallery-abstract,
+		"nature"   : gallery-nature,
+		"urban"   : gallery-urban,
+		"vermont"  : gallery-vermont,
+	}
+	return HttpResponseRedirect(reverse(options[gallery_cat]))
 
 def gimage(request, image):
 	page_image = GalleryImage.objects.get(name__exact = image)
