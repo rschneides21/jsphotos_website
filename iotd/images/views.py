@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from images.models import FeaturedImage, GalleryImage, WebsiteImage, FrontPageImage, AbstractImage, NatureImage, UrbanImage, VermontImage
+from images.models import WebsiteImage, FrontPageImage, AbstractImage, NatureImage, UrbanImage, VermontImage
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
