@@ -5,42 +5,31 @@ from django.db import models
 #create abstract base classes for images
 
 
-class AbstractImage(models.Model):
-	name = models.CharField(max_length=200)
-	order = models.IntegerField()
-	category_id = models.CharField(max_length=200)
-	uploaded = models.DateTimeField(auto_now=True)
-	img = models.ImageField(upload_to="")
+class Category(models.Model):
+    cat_name = models.CharField(max_length=200)
 
-class NatureImage(models.Model):
-	name = models.CharField(max_length=200)
-	order = models.IntegerField()
-	category_id = models.CharField(max_length=200)
-	uploaded = models.DateTimeField(auto_now=True)
-	img = models.ImageField(upload_to="")
+    def __str__(self):
+        return self.cat_name
 
-class UrbanImage(models.Model):
-	name = models.CharField(max_length=200)
-	order = models.IntegerField()
-	category_id = models.CharField(max_length=200)
-	uploaded = models.DateTimeField(auto_now=True)
-	img = models.ImageField(upload_to="")
+    class Meta:
+        ordering = ('cat_name',)
 
-class VermontImage(models.Model):
-	name = models.CharField(max_length=200)
-	order = models.IntegerField()
-	category_id = models.CharField(max_length=200)
-	uploaded = models.DateTimeField(auto_now=True)
-	img = models.ImageField(upload_to="")
+class Image(models.Model):
+    name       = models.CharField(max_length=200)
+    uploaded   = models.DateTimeField(auto_now=True)
+    img        = models.ImageField(upload_to="")
+    categories = models.ManyToManyField(Category, through = 'Order')
 
-class WebsiteImage(models.Model):
+    def __str__(self):
+        return self.name
 
-	name = models.CharField(max_length=200)
-	uploaded = models.DateTimeField(auto_now=True)
-	img = models.ImageField(upload_to="")
+class Order(models.Model):
+    image    = models.ForeignKey(Image)
+    category = models.ForeignKey(Category)
+    order    = models.IntegerField() 
 
-class FrontPageImage(models.Model):
 
-	name = models.CharField(max_length=200)
-	uploaded = models.DateTimeField(auto_now=True)
-	img = models.ImageField(upload_to="")
+
+
+
+

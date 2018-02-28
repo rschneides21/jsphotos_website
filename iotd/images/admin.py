@@ -1,78 +1,29 @@
 from django.contrib import admin
-from images.models import AbstractImage, NatureImage, UrbanImage, VermontImage, WebsiteImage, FrontPageImage
+from images.models import Image, Category, Order
 
 # Register your models here.
 
-@admin.register(AbstractImage)
-class AbstractImageAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'order', 'category_id', 'uploaded')
-    ordering = ('-order',)
-    def thumbnail(self, obj):
-        if obj.img:
-            return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
-        else:
-            "no image"
-
-    thumbnail.allow_tags = True
-
-@admin.register(NatureImage)
-class NatureImageAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'order', 'category_id','uploaded')
-    ordering = ('-order',)
-    def thumbnail(self, obj):
-        if obj.img:
-            return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
-        else:
-            "no image"
-
-    thumbnail.allow_tags = True
-
-@admin.register(UrbanImage)
-class UrbanImageAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'order', 'category_id', 'uploaded')
-    ordering = ('-order',)
-    def thumbnail(self, obj):
-        if obj.img:
-            return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
-        else:
-            "no image"
-
-    thumbnail.allow_tags = True
-
-@admin.register(VermontImage)
-class VermontImageAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'order', 'category_id', 'uploaded')
-    ordering = ('-order',)
-    def thumbnail(self, obj):
-        if obj.img:
-            return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
-        else:
-            "no image"
-
-    thumbnail.allow_tags = True
-
-
-@admin.register(WebsiteImage)
-class WebsiteImageAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'uploaded')
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ('thumbnail', 'name', 'uploaded', 'get_categories')
     ordering = ('-uploaded',)
     def thumbnail(self, obj):
         if obj.img:
             return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
         else:
             "no image"
+    def get_categories(self, obj):
+        return "\n".join([c.cat_name for c in obj.categories.all()])
+
     thumbnail.allow_tags = True
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('cat_name',)
+    ordering = ('cat_name',)
 
-@admin.register(FrontPageImage)
-class FrontPageImageAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'uploaded')
-    ordering = ('-uploaded',)
-    def thumbnail(self, obj):
-        if obj.img:
-            return '<img src="%s" style="height: 50px; width: auto">' % (obj.img.url)
-        else:
-            "no image"
-    thumbnail.allow_tags = True                
-
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('image', 'order', 'category')
+    ordering = ('category','order',)
 
